@@ -103,10 +103,12 @@
 <meta property="og:site_name" content="Demkors&#39; 3rd Website">
 <meta property="og:description" content="实训期间，有任务需要将全国县级以上行政区划地名，录入数据库里。从网上得到一群以JSON对象格式编排的三千多条地名——我回想起了当初手动复制粘贴、以Java处理JSON的恐惧；紧接着十分自然地想到Python，进其文档翻阅，确有json包，读取、解析一气呵成，就决定拿他转换成SQL命令了。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-08-11T01:43:43.739Z">
+<meta property="og:image" content="http://wx3.sinaimg.cn/large/62fb934agy1fifvbo4lshj20sn0l4dj0.jpg">
+<meta property="og:updated_time" content="2017-08-11T08:40:34.863Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="十小时速成Python">
 <meta name="twitter:description" content="实训期间，有任务需要将全国县级以上行政区划地名，录入数据库里。从网上得到一群以JSON对象格式编排的三千多条地名——我回想起了当初手动复制粘贴、以Java处理JSON的恐惧；紧接着十分自然地想到Python，进其文档翻阅，确有json包，读取、解析一气呵成，就决定拿他转换成SQL命令了。">
+<meta name="twitter:image" content="http://wx3.sinaimg.cn/large/62fb934agy1fifvbo4lshj20sn0l4dj0.jpg">
 
 
 
@@ -357,6 +359,7 @@
       
         <p>实训期间，有任务需要将全国县级以上行政区划地名，录入数据库里。从网上得到一群以JSON对象格式编排的三千多条地名——我回想起了当初手动复制粘贴、以Java处理JSON的恐惧；紧接着十分自然地想到Python，进其文档翻阅，确有<code>json</code>包，读取、解析一气呵成，就决定拿他转换成SQL命令了。</p>
 <a id="more"></a>
+<p><img src="http://wx3.sinaimg.cn/large/62fb934agy1fifvbo4lshj20sn0l4dj0.jpg" alt="Sample"></p>
 <p><em>（人生苦短，我用Python）</em></p>
 <p>安装上<strong><em>Python 3.6.2</em></strong>。此时最大的问题是，我业务不熟，这将是我第一个实际可用的Python脚本。于是，花三小时认识Python的基本操作。后再以三小时编制了第一版可执行的脚本。又经四小时修正结果当中的漏洞（如“其他市县”、直辖市在市级无记录等），遂成。</p>
 <p>初步的预想是：“重建<code>province</code> <code>country</code> <code>county</code>三个表，并从该行政区划JSON得到若干SQL insert命令，按省、市、县分开存放”。<code>json.load()</code>和<code>string.format()</code>超好用，代码的大头只是SQL create命令构建，以及地区分类罢。地名存于<code>list.json</code>文件内。期间还无意发现，Python不识别UTF-8字符，迫使我将数据源的UTF-8编码改为GBK(ASCII)。最终稿见下。</p>
@@ -409,6 +412,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/08/21/Miku10th/" rel="prev" title="Miku酱十周年祝福">
+                Miku酱十周年祝福 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -478,7 +485,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">8</span>
+                <span class="site-state-item-count">9</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
