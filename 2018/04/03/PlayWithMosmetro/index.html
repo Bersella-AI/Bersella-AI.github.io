@@ -1,0 +1,1040 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-CN">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Source Sans Pro:300,300italic,400,400italic,700,700italic|Cousine:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=6.3.0" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-id.png?v=6.3.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-id.png?v=6.3.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-id.png?v=6.3.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.3.0" color="#222">
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '6.3.0',
+    sidebar: {"position":"left","display":"hide","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="莫斯科地铁官网有个页面展示地铁线路图，它成功地引起了我的注意。我将此页面整个保存至本地，欣赏源代码……emmmm……">
+<meta name="keywords" content="JavaScript,前端,地铁线路图,折腾">
+<meta property="og:type" content="article">
+<meta property="og:title" content="交互式地铁线路图试探（零）：毛熊式hardcode了解一下">
+<meta property="og:url" content="http://idemkors.github.io/2018/04/03/PlayWithMosmetro/index.html">
+<meta property="og:site_name" content="Demkors&#39; 3rd Website">
+<meta property="og:description" content="莫斯科地铁官网有个页面展示地铁线路图，它成功地引起了我的注意。我将此页面整个保存至本地，欣赏源代码……emmmm……">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-04-07T17:38:08.247Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="交互式地铁线路图试探（零）：毛熊式hardcode了解一下">
+<meta name="twitter:description" content="莫斯科地铁官网有个页面展示地铁线路图，它成功地引起了我的注意。我将此页面整个保存至本地，欣赏源代码……emmmm……">
+
+
+
+
+
+
+  <link rel="canonical" href="http://idemkors.github.io/2018/04/03/PlayWithMosmetro/"/>
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>交互式地铁线路图试探（零）：毛熊式hardcode了解一下 | Demkors' 3rd Website</title>
+  
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Demkors' 3rd Website</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+    <a href="/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-home"></i> <br />首页</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+    <a href="/about/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-info"></i> <br />关于</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+    <a href="/tags/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />标签</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+    <a href="/categories/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-folder"></i> <br />分类</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+    <a href="/archives/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />归档</a>
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+    
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://idemkors.github.io/2018/04/03/PlayWithMosmetro/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Demkors Infinity">
+      <meta itemprop="description" content="简单得不能再简单了">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Demkors' 3rd Website">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">交互式地铁线路图试探（零）：毛熊式hardcode了解一下
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2018-04-03 18:32:30" itemprop="dateCreated datePublished" datetime="2018-04-03T18:32:30+08:00">2018-04-03</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2018-04-08 01:38:08" itemprop="dateModified" datetime="2018-04-08T01:38:08+08:00">2018-04-08</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>莫斯科地铁官网有个页面展示<a href="http://www.mosmetro.ru/metro-map" target="_blank" rel="noopener">地铁线路图</a>，它成功地引起了我的注意。我将此页面整个保存至本地，欣赏源代码……emmmm……</p>
+<a id="more"></a>
+<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>首先，如要自行体验，请注意：该页面仅提供<strong><em>俄文</em></strong>显示。</p>
+<p>这个线路图有一点好，就是能够选择任意两个站点，然后“系统”给出最佳的乘坐路径；还会给出此路径需要乘车多少分钟，步行多少分钟。是一种优秀的可交互地铁线路图之典型。</p>
+<p><a href="http://o9ufv8kew.bkt.clouddn.com/Mosmetro-search-route.png" target="_blank" rel="noopener">Mosmetro-Search</a></p>
+<p>我自制轨道交通线路图迄今也有一年出头：以Edraw Max绘制静态图，历经26个版本迭代，着实帮助到了众人。发现此种交互式地图过后，我隐约感到，我可以更上一层楼，遂以此为蓝本评估可行性……</p>
+<h1 id="正事"><a href="#正事" class="headerlink" title="正事"></a>正事</h1><p>以Firefox浏览器访问上述线路图页面，启动开发者模式，通过调试器可以发现网页文件来源：</p>
+<p><a href="http://o9ufv8kew.bkt.clouddn.com/Mosmetro-structure.png" target="_blank" rel="noopener">Mosmetro-structure</a></p>
+<p>保存了页面，需要从中挖掘具体如何实现此页面，尤其是搜索路径的功能。分析下页面背后的东西（保存所得文件名、路径可能和原网站不同）：</p>
+<ul>
+<li>若干个JavaScript脚本文件：<ul>
+<li>jquery.js（原名jquery.bxslider.min.js）是基于jQuery的bxSlider，版本4.1.2；</li>
+<li>jquery_002.js（原名jquery.js）是jQuery本体，版本2.1.4；</li>
+<li>jquery_003.js（原名jquery.fancybox.pack.js）是基于jQuery的fancyBox，版本2.1.5；</li>
+<li><em>watch.js用于Yandex的统计服务Metrika——来自外源；</em></li>
+<li><em>analytics.js用于Google的统计服务——来自外源；</em></li>
+<li>ba.js来自Bitrix的<a href="http://bitrix.info" target="_blank" rel="noopener">统计服务</a>；</li>
+<li>scripts.js应该用以获取新闻列表、停车场信息；</li>
+<li>schedule.js应该用以获取列车时刻表；</li>
+<li>map.js用以获取站点和基础设施信息；</li>
+<li>queryLoader.js用以预加载页面；</li>
+<li><strong>app.js……是本文主角，稍后再谈。</strong></li>
+</ul>
+</li>
+<li>两个SVG矢量图文档，new_map是保存页面时所得；slices是在监控网络请求时发现的临时文件，后来发现，其作为SVG文档被整体置入页面（位于<code>&lt;div class=&quot;map&quot;&gt;</code>下方）。</li>
+<li>若干个CSS样式文件。</li>
+</ul>
+<p>其中，探究重点在于JS脚本——一般而言，网页要响应用户操作，靠的是JS脚本；尽管我曾<a href="https://github.com/iDemkors/StaticWebpageTest" target="_blank" rel="noopener">以纯CSS对“鼠标悬停”作出响应</a>），但CSS也只能对付涉及页面内组件的状态变化，我需要的搜索路径等功能肯定不靠CSS。</p>
+<p>探究一番后，其他JS脚本都相对简洁，功能比较清晰（并已在上面打出）。下面讲讲——</p>
+<h2 id="app-js"><a href="#app-js" class="headerlink" title="app.js"></a>app.js</h2><p><a href="http://www.mosmetro.ru/bitrix/templates/sh1/app.js" target="_blank" rel="noopener">一个1007KB、总计27471行代码的庞大身躯。</a>最初阅览时，便发现有猫腻：里面掺和着若干外部模块的许可声明，最小的和“正常”的代码并存。于是，忍不住要确认这单个文件究竟糅合了多少个模块。就在遍历过程中，又有令人哭笑不得的新发现，也即<strong>hardcode</strong>。从中挖出以下有名或无名的代码块（括号内为代码行范围）：</p>
+<ul>
+<li>Lo-Dash 2.4.2 (1~7181)</li>
+<li>handlebars 2.0.0 (7182~7842)</li>
+<li><strong>自定义模块</strong>，依赖handlebars，用以在页面内动态生成元素 (7843~7985)</li>
+<li>innerHTML property for SVGelement (7986~8083)</li>
+<li>Inputmask 3.1.63 (8086~9914)<ul>
+<li>包括该模块的扩展模块date.extensions (9446~9914)</li>
+</ul>
+</li>
+<li>Bridget 1.1.0 (9915~10055)</li>
+<li>eventie 1.0.6 <em>可能未使用</em> (10056~10137)</li>
+<li>EventEmitter 4.2.11 (10138~10610)</li>
+<li>getStyleProperty 1.0.4 <em>可能未定义操作符</em> (10611~10666)</li>
+<li>getSize 1.2.2 <em>可能未使用</em> (10667~10917)</li>
+<li>docReady 1.0.4 <em>可能未使用</em> (10918~10998)</li>
+<li>matchesSelector 1.0.3 <em>可能未使用</em> (10999~11106)</li>
+<li>Fizzy UI Utils 1.0.1 <em>可能未使用</em> (11107~11377)</li>
+<li>Outlayer 1.4 (11378~12843)<ul>
+<li>用于Outlayer的操作符Item (11378~11942)</li>
+</ul>
+</li>
+<li>Masonry 3.3 <em>依赖Outlayer</em> (12844~13048)</li>
+<li><strong>疑似自定义模块</strong>，用于相册响应滑动操作 (13049~14350)</li>
+<li>Fotorama 4.6.4 (14351~14355)</li>
+<li>sifter.js (14356~14828)</li>
+<li>microplugin.js (14829~14964)</li>
+<li>selectize.js 0.12.1 (14965~18023)</li>
+<li>Shuffle.js 3.1.1 (18024~19716)<ul>
+<li>其中包含依赖模块Modernizr 2.6.2 (18031~?)</li>
+</ul>
+</li>
+<li><code>baron</code> (19717~20952)<ul>
+<li>包含扩展模块Autoupdate baron (20630~20708)</li>
+<li>包含扩展模块Controls plugin (20709~20800)</li>
+<li>包含扩展模块Pull to Load plugin (20801~20952)</li>
+</ul>
+</li>
+<li>操作符<code>goog</code>、<code>crow</code>定义 (20953~21146)</li>
+<li><strong>自定义区域</strong> (21147~<em>EOF</em>)<ul>
+<li>操作符<code>blocks</code>定义、初始化 (21147~21167)</li>
+<li><code>metro[]</code>定义 (21202~21478)</li>
+<li><code>metroLinesWithId[]</code>定义 (21479~23184)</li>
+<li><code>metroStationsConnections[]</code>定义 (23185~24836)</li>
+<li><strong>组件<code>PathFinder</code>，即搜索路径功能定义</strong> (24837~25117)</li>
+<li>组件<code>StationHelper</code>定义 (25118~25165)</li>
+<li><code>blocks</code>各个子操作符定义 (25166~25826，26149~<em>EOF</em>)</li>
+<li>其它独立函数：<ul>
+<li><code>loadImage</code> (21168~21185)</li>
+<li><code>logObject</code> <em>空函数</em> (21186~21189)</li>
+<li><code>numeralsString</code> (21190~21201)</li>
+<li><code>isMobileDevice</code> (25827~25840)</li>
+<li><code>bindMapControl</code> (25841~26071)</li>
+<li><code>getSupportedEvents</code> (26072~26089)</li>
+<li><code>eventManager</code> (26090~26124)</li>
+<li><code>getMapLibrary</code> (26125~26148)</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<hr>
+<p>之后对上述代码块（尤其自定义区域）进行挖掘，发现了不少亮点：</p>
+<ul>
+<li><code>blocks</code>才是整个网站元素的全局容器；所有元素的响应行为皆在此定义。</li>
+<li><code>metro</code>、<code>metroLinesWithId</code>、<code>metroStationsConnections</code> <strong>三个JSON数组，将整个莫斯科地铁的线路、站点、通勤时间信息，以硬编码（hardcode）刻在这脚本里。</strong> 看完我是服气的，<strong>这就是毛熊式hardcode！</strong></li>
+<li>定义<code>PathFinder</code>的代码块以俄文明确解释为“图内路径搜索组件”（24837行）。多种搜索算法在<code>crow</code>里面皆有定义，其中的Dijkstra算法便为搜索功能所用（25071行）：<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> path = w.crow.Graph.findGoal(&#123;<span class="attr">start</span>: fromNode, <span class="attr">goal</span>: toNode, <span class="attr">algorithm</span>: <span class="string">"dijkstra"</span>&#125;);</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/JavaScript/" rel="tag"># JavaScript</a>
+          
+            <a href="/tags/前端/" rel="tag"># 前端</a>
+          
+            <a href="/tags/地铁线路图/" rel="tag"># 地铁线路图</a>
+          
+            <a href="/tags/折腾/" rel="tag"># 折腾</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/08/21/Miku10th/" rel="next" title="Miku酱十周年祝福">
+                <i class="fa fa-chevron-left"></i> Miku酱十周年祝福
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/06/07/LlamaHusbandryCorp/" rel="prev" title="（喵窝）无极限拉玛牧业有限公司——羊驼、家兔专营">
+                （喵窝）无极限拉玛牧业有限公司——羊驼、家兔专营 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.jpg"
+                alt="Demkors Infinity" />
+            
+              <p class="site-author-name" itemprop="name">Demkors Infinity</p>
+              <p class="site-description motion-element" itemprop="description">简单得不能再简单了</p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">11</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">7</span>
+                    <span class="site-state-item-name">分类</span>
+                  
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">17</span>
+                    <span class="site-state-item-name">标签</span>
+                  
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/iDemkors" target="_blank" title="GitHub"><i class="fa fa-fw fa-github"></i></a>
+                  
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://gitee.com/iDemkors" target="_blank" title="OSChina (Gitee)"><i class="fa fa-fw fa-git"></i></a>
+                  
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://weibo.com/cjdawei" target="_blank" title="Weibo"><i class="fa fa-fw fa-weibo"></i></a>
+                  
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="http://t.qq.com/cjdawei" target="_blank" title="Tencent Weibo"><i class="fa fa-fw fa-tencent-weibo"></i></a>
+                  
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="http://demkors.lofter.com" target="_blank" title="Lofter"><i class="fa fa-fw fa-instagram"></i></a>
+                  
+                </span>
+              
+            </div>
+          
+
+          
+          
+            <div class="cc-license motion-element" itemprop="license">
+              <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" target="_blank">
+                <img src="/images/cc-by-nc-sa.svg" alt="Creative Commons" />
+              </a>
+            </div>
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-envelope"></i>
+                eMail
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="/#" title="coputerpepo(at)163.com" target="_blank">coputerpepo(at)163.com</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="/#" title="demkors(at)gmail.com" target="_blank">demkors(at)gmail.com</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#正事"><span class="nav-number">2.</span> <span class="nav-text">正事</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#app-js"><span class="nav-number">2.1.</span> <span class="nav-text">app.js</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2011 &mdash; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-cube"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Demkors Infinity</span>
+
+  
+
+  
+</div>
+
+
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动 v3.7.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/theme-next/hexo-theme-next">NexT.Muse</a> v6.3.0</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.3.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.3.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.3.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.3.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.3.0"></script>
+
+
+
+  
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

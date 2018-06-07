@@ -2,15 +2,27 @@
 
 
 
+
+
+
+
+
+
+
+
+
   
 
 
-<html class="theme-next mist use-motion" lang="zh-Hans">
+<html class="theme-next muse use-motion" lang="zh-CN">
 <head>
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2"/>
 <meta name="theme-color" content="#222">
+
+
+
 
 
 
@@ -37,9 +49,6 @@
 
 
 
-  
-  
-  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
 
 
 
@@ -49,6 +58,9 @@
   
   
 
+  
+    
+    
   
 
   
@@ -59,6 +71,8 @@
 
   
     
+      
+    
 
     
   
@@ -66,7 +80,7 @@
   
     
     
-    <link href="//fonts.googleapis.com/css?family=PT Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+    <link href="//fonts.googleapis.com/css?family=Source Sans Pro:300,300italic,400,400italic,700,700italic|Cousine:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
   
 
 
@@ -76,39 +90,25 @@
 
 <link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
 
-<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
+<link href="/css/main.css?v=6.3.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="心得,Python," />
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-id.png?v=6.3.0">
 
 
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-id.png?v=6.3.0">
 
 
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-id.png?v=6.3.0">
 
 
-
-
-  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.2" />
-
-
-
+  <link rel="mask-icon" href="/images/logo.svg?v=6.3.0" color="#222">
 
 
 
-<meta name="description" content="实训期间，有任务需要将全国县级以上行政区划地名，录入数据库里。从网上得到一群以JSON对象格式编排的三千多条地名——我回想起了当初手动复制粘贴、以Java处理JSON的恐惧；紧接着十分自然地想到Python，进其文档翻阅，确有json包，读取、解析一气呵成，就决定拿他转换成SQL命令了。">
-<meta name="keywords" content="心得,Python">
-<meta property="og:type" content="article">
-<meta property="og:title" content="十小时速成Python">
-<meta property="og:url" content="http://idemkors.github.io/2017/08/09/FirstPython/index.html">
-<meta property="og:site_name" content="Demkors&#39; 3rd Website">
-<meta property="og:description" content="实训期间，有任务需要将全国县级以上行政区划地名，录入数据库里。从网上得到一群以JSON对象格式编排的三千多条地名——我回想起了当初手动复制粘贴、以Java处理JSON的恐惧；紧接着十分自然地想到Python，进其文档翻阅，确有json包，读取、解析一气呵成，就决定拿他转换成SQL命令了。">
-<meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://wx3.sinaimg.cn/large/62fb934agy1fifvbo4lshj20sn0l4dj0.jpg">
-<meta property="og:updated_time" content="2017-08-11T08:40:34.863Z">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="十小时速成Python">
-<meta name="twitter:description" content="实训期间，有任务需要将全国县级以上行政区划地名，录入数据库里。从网上得到一群以JSON对象格式编排的三千多条地名——我回想起了当初手动复制粘贴、以Java处理JSON的恐惧；紧接着十分自然地想到Python，进其文档翻阅，确有json包，读取、解析一气呵成，就决定拿他转换成SQL命令了。">
-<meta name="twitter:image" content="http://wx3.sinaimg.cn/large/62fb934agy1fifvbo4lshj20sn0l4dj0.jpg">
+
+
+
 
 
 
@@ -116,15 +116,14 @@
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
-    scheme: 'Mist',
-    sidebar: {"position":"right","display":"hide","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":true},
-    fancybox: true,
+    scheme: 'Muse',
+    version: '6.3.0',
+    sidebar: {"position":"left","display":"hide","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
     tabs: true,
-    motion: true,
-    duoshuo: {
-      userId: '0',
-      author: '博主'
-    },
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
     algolia: {
       applicationID: '',
       apiKey: '',
@@ -136,10 +135,40 @@
 </script>
 
 
+  
 
 
 
 
+  <meta name="description" content="实训期间，有任务需要将全国县级以上行政区划地名，录入数据库里。从网上得到一群以JSON对象格式编排的三千多条地名——我回想起了当初手动复制粘贴、以Java处理JSON的恐惧；紧接着十分自然地想到Python，进其文档翻阅，确有json包，读取、解析一气呵成，就决定拿他转换成SQL命令了。">
+<meta name="keywords" content="心得,Python">
+<meta property="og:type" content="article">
+<meta property="og:title" content="十小时速成Python">
+<meta property="og:url" content="http://idemkors.github.io/2017/08/09/FirstPython/index.html">
+<meta property="og:site_name" content="Demkors&#39; 3rd Website">
+<meta property="og:description" content="实训期间，有任务需要将全国县级以上行政区划地名，录入数据库里。从网上得到一群以JSON对象格式编排的三千多条地名——我回想起了当初手动复制粘贴、以Java处理JSON的恐惧；紧接着十分自然地想到Python，进其文档翻阅，确有json包，读取、解析一气呵成，就决定拿他转换成SQL命令了。">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://wx3.sinaimg.cn/large/62fb934agy1fifvbo4lshj20sn0l4dj0.jpg">
+<meta property="og:updated_time" content="2017-08-11T08:40:34.864Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="十小时速成Python">
+<meta name="twitter:description" content="实训期间，有任务需要将全国县级以上行政区划地名，录入数据库里。从网上得到一群以JSON对象格式编排的三千多条地名——我回想起了当初手动复制粘贴、以Java处理JSON的恐惧；紧接着十分自然地想到Python，进其文档翻阅，确有json包，读取、解析一气呵成，就决定拿他转换成SQL命令了。">
+<meta name="twitter:image" content="http://wx3.sinaimg.cn/large/62fb934agy1fifvbo4lshj20sn0l4dj0.jpg">
+
+
+
+
+
+
+  <link rel="canonical" href="http://idemkors.github.io/2017/08/09/FirstPython/"/>
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
 
   <title>十小时速成Python | Demkors' 3rd Website</title>
   
@@ -151,16 +180,44 @@
 
 
 
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
+
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
 
   
   
     
   
 
-  <div class="container sidebar-position-right page-post-detail ">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -169,19 +226,17 @@
     
 
     <div class="custom-logo-site-title">
-      <a href="/"  class="brand" rel="start">
+      <a href="/" class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
         <span class="site-title">Demkors' 3rd Website</span>
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
-      
-        <p class="site-subtitle"></p>
-      
+    
   </div>
 
   <div class="site-nav-toggle">
-    <button>
+    <button aria-label="切换导航栏">
       <span class="btn-bar"></span>
       <span class="btn-bar"></span>
       <span class="btn-bar"></span>
@@ -189,55 +244,61 @@
   </div>
 </div>
 
-<nav class="site-nav">
-  
 
+
+<nav class="site-nav">
   
     <ul id="menu" class="menu">
       
         
-        <li class="menu-item menu-item-home">
-          <a href="/" rel="section">
-            
-            首页
-          </a>
-        </li>
-      
         
-        <li class="menu-item menu-item-categories">
-          <a href="/categories/" rel="section">
-            
-            分类
-          </a>
-        </li>
-      
         
-        <li class="menu-item menu-item-about">
-          <a href="/about/" rel="section">
-            
-            关于
-          </a>
-        </li>
-      
+          
+          <li class="menu-item menu-item-home">
+    <a href="/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-home"></i> <br />首页</a>
+  </li>
         
-        <li class="menu-item menu-item-archives">
-          <a href="/archives/" rel="section">
-            
-            归档
-          </a>
-        </li>
-      
         
-        <li class="menu-item menu-item-tags">
-          <a href="/tags/" rel="section">
-            
-            标签
-          </a>
-        </li>
-      
+        
+          
+          <li class="menu-item menu-item-about">
+    <a href="/about/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-info"></i> <br />关于</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+    <a href="/tags/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />标签</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+    <a href="/categories/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-folder"></i> <br />分类</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+    <a href="/archives/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />归档</a>
+  </li>
 
       
+      
     </ul>
+  
+
+  
+    
+
   
 
   
@@ -245,12 +306,20 @@
 
 
 
- </div>
+  
+
+
+
+</div>
     </header>
+
+    
+
 
     <main id="main" class="main">
       <div class="main-inner">
         <div class="content-wrap">
+          
           <div id="content" class="content">
             
 
@@ -263,6 +332,8 @@
   
   
 
+  
+
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
   
   
@@ -272,7 +343,7 @@
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Demkors Infinity">
-      <meta itemprop="description" content="">
+      <meta itemprop="description" content="简单得不能再简单了">
       <meta itemprop="image" content="/images/avatar.jpg">
     </span>
 
@@ -285,11 +356,19 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">十小时速成Python</h1>
+          <h1 class="post-title" itemprop="name headline">十小时速成Python
+              
+            
+          </h1>
         
 
         <div class="post-meta">
           <span class="post-time">
+
+            
+            
+            
+
             
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
@@ -297,13 +376,30 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-09T14:55:04+08:00">
-                2017-08-09
-              </time>
+
+              
+                
+              
+
+              <time title="创建时间：2017-08-09 14:55:04" itemprop="dateCreated datePublished" datetime="2017-08-09T14:55:04+08:00">2017-08-09</time>
             
 
             
+              
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2017-08-11 16:40:34" itemprop="dateModified" datetime="2017-08-11T16:40:34+08:00">2017-08-11</time>
+              
             
           </span>
 
@@ -319,11 +415,7 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/学习心得/" itemprop="url" rel="index">
-                    <span itemprop="name">学习心得</span>
-                  </a>
-                </span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/学习心得/" itemprop="url" rel="index"><span itemprop="name">学习心得</span></a></span>
 
                 
                 
@@ -363,17 +455,20 @@
 <p><em>（人生苦短，我用Python）</em></p>
 <p>安装上<strong><em>Python 3.6.2</em></strong>。此时最大的问题是，我业务不熟，这将是我第一个实际可用的Python脚本。于是，花三小时认识Python的基本操作。后再以三小时编制了第一版可执行的脚本。又经四小时修正结果当中的漏洞（如“其他市县”、直辖市在市级无记录等），遂成。</p>
 <p>初步的预想是：“重建<code>province</code> <code>country</code> <code>county</code>三个表，并从该行政区划JSON得到若干SQL insert命令，按省、市、县分开存放”。<code>json.load()</code>和<code>string.format()</code>超好用，代码的大头只是SQL create命令构建，以及地区分类罢。地名存于<code>list.json</code>文件内。期间还无意发现，Python不识别UTF-8字符，迫使我将数据源的UTF-8编码改为GBK(ASCII)。最终稿见下。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> json</div><div class="line"></div><div class="line"><span class="comment"># ----- CONSTANTS -----</span></div><div class="line">MUNICIPALITIES = [<span class="string">'11'</span>,<span class="string">'12'</span>,<span class="string">'31'</span>,<span class="string">'50'</span>,<span class="string">'81'</span>,<span class="string">'82'</span>]</div><div class="line">MUN_COUNTRY_CODE = <span class="string">'01'</span></div><div class="line">PROV_CHECK = <span class="string">'0000'</span></div><div class="line">CITY_CHECK = <span class="string">'00'</span></div><div class="line">PROVINCE_IN_DB = <span class="string">'province'</span></div><div class="line">COUNTRY_IN_DB = <span class="string">'country'</span></div><div class="line">COUNTY_IN_DB = <span class="string">'county'</span></div><div class="line">OTHER_COUNTIES_NAME = <span class="string">'其他市县'</span></div><div class="line">OTHER_COUNTIES_CODE = <span class="string">'90'</span></div><div class="line">SQL_CLEAR = <span class="string">"DROP TABLE IF EXISTS `&#123;&#125;`;\n"</span></div><div class="line">SQL_CREATE = <span class="string">"CREATE TABLE `&#123;0&#125;` (&#123;1&#125;);\n"</span></div><div class="line">SQL_CREATE_PROV = <span class="string">"""</span></div><div class="line"><span class="string">  `id` VARCHAR(2) NOT NULL,</span></div><div class="line"><span class="string">  `name` VARCHAR(16) NOT NULL,</span></div><div class="line"><span class="string">  PRIMARY KEY (`id`),</span></div><div class="line"><span class="string">  UNIQUE INDEX `id_UNIQUE` (`id` ASC)</span></div><div class="line"><span class="string">  """</span></div><div class="line">SQL_CREATE_CITY = <span class="string">"""</span></div><div class="line"><span class="string">  `countryid` VARCHAR(4) NOT NULL,</span></div><div class="line"><span class="string">  `provinceid` VARCHAR(2) NOT NULL,</span></div><div class="line"><span class="string">  `name` VARCHAR(24) NULL,</span></div><div class="line"><span class="string">  PRIMARY KEY (`countryid`, `provinceid`),</span></div><div class="line"><span class="string">  INDEX `provid_idx` (`provinceid` ASC),</span></div><div class="line"><span class="string">  CONSTRAINT `provid`</span></div><div class="line"><span class="string">    FOREIGN KEY (`provinceid`)</span></div><div class="line"><span class="string">    REFERENCES `&#123;&#125;` (`id`)</span></div><div class="line"><span class="string">    ON DELETE CASCADE</span></div><div class="line"><span class="string">    ON UPDATE CASCADE</span></div><div class="line"><span class="string">  """</span></div><div class="line">SQL_CREATE_COUNTY = <span class="string">"""</span></div><div class="line"><span class="string">  `countyid` VARCHAR(2) NOT NULL,</span></div><div class="line"><span class="string">  `countryid` VARCHAR(4) NOT NULL,</span></div><div class="line"><span class="string">  `name` VARCHAR(30) NULL,</span></div><div class="line"><span class="string">  PRIMARY KEY (`countyid`, `countryid`),</span></div><div class="line"><span class="string">  INDEX `cityid_idx` (`countryid` ASC),</span></div><div class="line"><span class="string">  CONSTRAINT `cityid`</span></div><div class="line"><span class="string">    FOREIGN KEY (`countryid`)</span></div><div class="line"><span class="string">    REFERENCES `&#123;&#125;` (`countryid`)</span></div><div class="line"><span class="string">    ON DELETE CASCADE</span></div><div class="line"><span class="string">    ON UPDATE CASCADE</span></div><div class="line"><span class="string">  """</span></div><div class="line">SQL_INSERT = <span class="string">"INSERT INTO `&#123;0&#125;` VALUES &#123;1&#125;;\n"</span></div><div class="line">FILE_SOURCE = <span class="string">'list.json'</span></div><div class="line">FILE_TARGET = <span class="string">'places.sql'</span></div><div class="line"></div><div class="line"><span class="comment"># ----- SQL definition -----</span></div><div class="line">sqlClear = SQL_CLEAR.format(PROVINCE_IN_DB) + \</div><div class="line">    SQL_CLEAR.format(COUNTRY_IN_DB) + \</div><div class="line">    SQL_CLEAR.format(COUNTY_IN_DB)</div><div class="line">sqlCreate = SQL_CREATE.format(PROVINCE_IN_DB,SQL_CREATE_PROV) + \</div><div class="line">    SQL_CREATE.format(COUNTRY_IN_DB,</div><div class="line">        SQL_CREATE_CITY.format(PROVINCE_IN_DB)) + \</div><div class="line">    SQL_CREATE.format(COUNTY_IN_DB,</div><div class="line">        SQL_CREATE_COUNTY.format(COUNTRY_IN_DB))</div><div class="line"></div><div class="line"><span class="comment"># ----- GLOBAL VARIABLES -----</span></div><div class="line"><span class="comment"># The final String containing SQL commands</span></div><div class="line">sql = sqlClear + sqlCreate</div><div class="line">otherCountiesFound = <span class="keyword">False</span></div><div class="line"></div><div class="line"><span class="comment"># ----- HERE WE GO!! -----</span></div><div class="line"><span class="comment"># Read from FILE_SOURCE</span></div><div class="line">file = open(FILE_SOURCE,<span class="string">'r'</span>)</div><div class="line">source = json.load(file)</div><div class="line">sourceKeys = source.keys()</div><div class="line">file.close()</div><div class="line"><span class="comment"># sourceKey.sort()</span></div><div class="line">places = iter(sourceKeys)</div><div class="line"><span class="keyword">for</span> place <span class="keyword">in</span> places:</div><div class="line">    provCode = place[<span class="number">0</span>:<span class="number">2</span>]</div><div class="line">    cityCode = place[<span class="number">0</span>:<span class="number">4</span>]</div><div class="line">    countyCode = place[<span class="number">4</span>:<span class="number">6</span>]</div><div class="line">    name = source.get(place)</div><div class="line">    <span class="comment"># Province or municipality found</span></div><div class="line">    <span class="keyword">if</span> (place.startswith(PROV_CHECK,<span class="number">2</span>)):</div><div class="line">        <span class="comment"># Check redundancy (if necessary)</span></div><div class="line">        provInfo = (provCode,name)</div><div class="line">        sqlAddProv = SQL_INSERT.format(PROVINCE_IN_DB,str(provInfo))</div><div class="line">        sql += sqlAddProv</div><div class="line">        <span class="comment"># Check whether this "province" is a municipality</span></div><div class="line">        <span class="keyword">if</span> (provCode <span class="keyword">in</span> MUNICIPALITIES):</div><div class="line">            cityCode = provCode + MUN_COUNTRY_CODE</div><div class="line">            cityInfo = (cityCode,provCode,name)</div><div class="line">            sqlAddCity = SQL_INSERT.format(COUNTRY_IN_DB,str(cityInfo))</div><div class="line">            sql += sqlAddCity</div><div class="line">    <span class="comment"># Country (NON-municipality) found</span></div><div class="line">    <span class="keyword">elif</span> (place.startswith(CITY_CHECK,<span class="number">4</span>)):</div><div class="line">        cityInfo = (cityCode,provCode,name)</div><div class="line">        sqlAddCity = SQL_INSERT.format(COUNTRY_IN_DB,str(cityInfo))</div><div class="line">        sql += sqlAddCity</div><div class="line">    <span class="comment"># County found</span></div><div class="line">    <span class="keyword">else</span>:</div><div class="line">        <span class="comment"># Maybe there are INDEPENDENT counties...</span></div><div class="line">        <span class="keyword">if</span> (place.startswith(OTHER_COUNTIES_CODE,<span class="number">2</span>)):</div><div class="line">            <span class="keyword">if</span> (<span class="keyword">not</span> otherCountiesFound):</div><div class="line">                cityInfo = (cityCode,provCode,OTHER_COUNTIES_NAME)</div><div class="line">                sqlAddCity = SQL_INSERT.format(COUNTRY_IN_DB,str(cityInfo))</div><div class="line">                sql += sqlAddCity</div><div class="line">                otherCountiesFound = <span class="keyword">True</span></div><div class="line">        <span class="keyword">else</span>:</div><div class="line">            otherCountiesFound = <span class="keyword">False</span></div><div class="line">        countyInfo = (countyCode,cityCode,name)</div><div class="line">        sqlAddCounty = SQL_INSERT.format(COUNTY_IN_DB,str(countyInfo))</div><div class="line">        sql += sqlAddCounty</div><div class="line"><span class="comment"># Iteration finished</span></div><div class="line">file = open(FILE_TARGET,<span class="string">'w'</span>)</div><div class="line">file.write(sql)</div><div class="line">file.close()</div><div class="line">print(<span class="string">'SQL commands have been put into places.sql'</span>)</div></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> json</span><br><span class="line"></span><br><span class="line"><span class="comment"># ----- CONSTANTS -----</span></span><br><span class="line">MUNICIPALITIES = [<span class="string">'11'</span>,<span class="string">'12'</span>,<span class="string">'31'</span>,<span class="string">'50'</span>,<span class="string">'81'</span>,<span class="string">'82'</span>]</span><br><span class="line">MUN_COUNTRY_CODE = <span class="string">'01'</span></span><br><span class="line">PROV_CHECK = <span class="string">'0000'</span></span><br><span class="line">CITY_CHECK = <span class="string">'00'</span></span><br><span class="line">PROVINCE_IN_DB = <span class="string">'province'</span></span><br><span class="line">COUNTRY_IN_DB = <span class="string">'country'</span></span><br><span class="line">COUNTY_IN_DB = <span class="string">'county'</span></span><br><span class="line">OTHER_COUNTIES_NAME = <span class="string">'其他市县'</span></span><br><span class="line">OTHER_COUNTIES_CODE = <span class="string">'90'</span></span><br><span class="line">SQL_CLEAR = <span class="string">"DROP TABLE IF EXISTS `&#123;&#125;`;\n"</span></span><br><span class="line">SQL_CREATE = <span class="string">"CREATE TABLE `&#123;0&#125;` (&#123;1&#125;);\n"</span></span><br><span class="line">SQL_CREATE_PROV = <span class="string">"""</span></span><br><span class="line"><span class="string">  `id` VARCHAR(2) NOT NULL,</span></span><br><span class="line"><span class="string">  `name` VARCHAR(16) NOT NULL,</span></span><br><span class="line"><span class="string">  PRIMARY KEY (`id`),</span></span><br><span class="line"><span class="string">  UNIQUE INDEX `id_UNIQUE` (`id` ASC)</span></span><br><span class="line"><span class="string">  """</span></span><br><span class="line">SQL_CREATE_CITY = <span class="string">"""</span></span><br><span class="line"><span class="string">  `countryid` VARCHAR(4) NOT NULL,</span></span><br><span class="line"><span class="string">  `provinceid` VARCHAR(2) NOT NULL,</span></span><br><span class="line"><span class="string">  `name` VARCHAR(24) NULL,</span></span><br><span class="line"><span class="string">  PRIMARY KEY (`countryid`, `provinceid`),</span></span><br><span class="line"><span class="string">  INDEX `provid_idx` (`provinceid` ASC),</span></span><br><span class="line"><span class="string">  CONSTRAINT `provid`</span></span><br><span class="line"><span class="string">    FOREIGN KEY (`provinceid`)</span></span><br><span class="line"><span class="string">    REFERENCES `&#123;&#125;` (`id`)</span></span><br><span class="line"><span class="string">    ON DELETE CASCADE</span></span><br><span class="line"><span class="string">    ON UPDATE CASCADE</span></span><br><span class="line"><span class="string">  """</span></span><br><span class="line">SQL_CREATE_COUNTY = <span class="string">"""</span></span><br><span class="line"><span class="string">  `countyid` VARCHAR(2) NOT NULL,</span></span><br><span class="line"><span class="string">  `countryid` VARCHAR(4) NOT NULL,</span></span><br><span class="line"><span class="string">  `name` VARCHAR(30) NULL,</span></span><br><span class="line"><span class="string">  PRIMARY KEY (`countyid`, `countryid`),</span></span><br><span class="line"><span class="string">  INDEX `cityid_idx` (`countryid` ASC),</span></span><br><span class="line"><span class="string">  CONSTRAINT `cityid`</span></span><br><span class="line"><span class="string">    FOREIGN KEY (`countryid`)</span></span><br><span class="line"><span class="string">    REFERENCES `&#123;&#125;` (`countryid`)</span></span><br><span class="line"><span class="string">    ON DELETE CASCADE</span></span><br><span class="line"><span class="string">    ON UPDATE CASCADE</span></span><br><span class="line"><span class="string">  """</span></span><br><span class="line">SQL_INSERT = <span class="string">"INSERT INTO `&#123;0&#125;` VALUES &#123;1&#125;;\n"</span></span><br><span class="line">FILE_SOURCE = <span class="string">'list.json'</span></span><br><span class="line">FILE_TARGET = <span class="string">'places.sql'</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># ----- SQL definition -----</span></span><br><span class="line">sqlClear = SQL_CLEAR.format(PROVINCE_IN_DB) + \</span><br><span class="line">    SQL_CLEAR.format(COUNTRY_IN_DB) + \</span><br><span class="line">    SQL_CLEAR.format(COUNTY_IN_DB)</span><br><span class="line">sqlCreate = SQL_CREATE.format(PROVINCE_IN_DB,SQL_CREATE_PROV) + \</span><br><span class="line">    SQL_CREATE.format(COUNTRY_IN_DB,</span><br><span class="line">        SQL_CREATE_CITY.format(PROVINCE_IN_DB)) + \</span><br><span class="line">    SQL_CREATE.format(COUNTY_IN_DB,</span><br><span class="line">        SQL_CREATE_COUNTY.format(COUNTRY_IN_DB))</span><br><span class="line"></span><br><span class="line"><span class="comment"># ----- GLOBAL VARIABLES -----</span></span><br><span class="line"><span class="comment"># The final String containing SQL commands</span></span><br><span class="line">sql = sqlClear + sqlCreate</span><br><span class="line">otherCountiesFound = <span class="keyword">False</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># ----- HERE WE GO!! -----</span></span><br><span class="line"><span class="comment"># Read from FILE_SOURCE</span></span><br><span class="line">file = open(FILE_SOURCE,<span class="string">'r'</span>)</span><br><span class="line">source = json.load(file)</span><br><span class="line">sourceKeys = source.keys()</span><br><span class="line">file.close()</span><br><span class="line"><span class="comment"># sourceKey.sort()</span></span><br><span class="line">places = iter(sourceKeys)</span><br><span class="line"><span class="keyword">for</span> place <span class="keyword">in</span> places:</span><br><span class="line">    provCode = place[<span class="number">0</span>:<span class="number">2</span>]</span><br><span class="line">    cityCode = place[<span class="number">0</span>:<span class="number">4</span>]</span><br><span class="line">    countyCode = place[<span class="number">4</span>:<span class="number">6</span>]</span><br><span class="line">    name = source.get(place)</span><br><span class="line">    <span class="comment"># Province or municipality found</span></span><br><span class="line">    <span class="keyword">if</span> (place.startswith(PROV_CHECK,<span class="number">2</span>)):</span><br><span class="line">        <span class="comment"># Check redundancy (if necessary)</span></span><br><span class="line">        provInfo = (provCode,name)</span><br><span class="line">        sqlAddProv = SQL_INSERT.format(PROVINCE_IN_DB,str(provInfo))</span><br><span class="line">        sql += sqlAddProv</span><br><span class="line">        <span class="comment"># Check whether this "province" is a municipality</span></span><br><span class="line">        <span class="keyword">if</span> (provCode <span class="keyword">in</span> MUNICIPALITIES):</span><br><span class="line">            cityCode = provCode + MUN_COUNTRY_CODE</span><br><span class="line">            cityInfo = (cityCode,provCode,name)</span><br><span class="line">            sqlAddCity = SQL_INSERT.format(COUNTRY_IN_DB,str(cityInfo))</span><br><span class="line">            sql += sqlAddCity</span><br><span class="line">    <span class="comment"># Country (NON-municipality) found</span></span><br><span class="line">    <span class="keyword">elif</span> (place.startswith(CITY_CHECK,<span class="number">4</span>)):</span><br><span class="line">        cityInfo = (cityCode,provCode,name)</span><br><span class="line">        sqlAddCity = SQL_INSERT.format(COUNTRY_IN_DB,str(cityInfo))</span><br><span class="line">        sql += sqlAddCity</span><br><span class="line">    <span class="comment"># County found</span></span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="comment"># Maybe there are INDEPENDENT counties...</span></span><br><span class="line">        <span class="keyword">if</span> (place.startswith(OTHER_COUNTIES_CODE,<span class="number">2</span>)):</span><br><span class="line">            <span class="keyword">if</span> (<span class="keyword">not</span> otherCountiesFound):</span><br><span class="line">                cityInfo = (cityCode,provCode,OTHER_COUNTIES_NAME)</span><br><span class="line">                sqlAddCity = SQL_INSERT.format(COUNTRY_IN_DB,str(cityInfo))</span><br><span class="line">                sql += sqlAddCity</span><br><span class="line">                otherCountiesFound = <span class="keyword">True</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            otherCountiesFound = <span class="keyword">False</span></span><br><span class="line">        countyInfo = (countyCode,cityCode,name)</span><br><span class="line">        sqlAddCounty = SQL_INSERT.format(COUNTY_IN_DB,str(countyInfo))</span><br><span class="line">        sql += sqlAddCounty</span><br><span class="line"><span class="comment"># Iteration finished</span></span><br><span class="line">file = open(FILE_TARGET,<span class="string">'w'</span>)</span><br><span class="line">file.write(sql)</span><br><span class="line">file.close()</span><br><span class="line">print(<span class="string">'SQL commands have been put into places.sql'</span>)</span><br></pre></td></tr></table></figure>
 <p>脚本大概花0.3~0.4秒处理3441条地名、3459条(?)SQL命令。<strong>图的就是那一时爽。</strong></p>
 <p>脚本于7月20日完成，这事完全能放微博分享一下，然而繁重工作之外有《Minecraft》《电脑报》“IT之家”“观察者网”，最终竟无限期拖延了。不过，打完此文正好顺便分享。</p>
 <hr>
 <p>一周后，接到要求，只需保留一个表<code>area</code>以及相应的insert命令。于是……将脚本简化了77%……（嗯，这是当初用5小时就能打出来的玩意。）</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> json</div><div class="line"></div><div class="line"><span class="comment"># ----- CONSTANTS -----</span></div><div class="line">PLACE_IN_DB = <span class="string">'area'</span></div><div class="line">SQL_INSERT = <span class="string">"INSERT INTO `&#123;0&#125;` VALUES &#123;1&#125;;\n"</span></div><div class="line">FILE_SOURCE = <span class="string">'list.json'</span></div><div class="line">FILE_TARGET = <span class="string">'places.sql'</span></div><div class="line"></div><div class="line"><span class="comment"># ----- GLOBAL VARIABLES -----</span></div><div class="line"><span class="comment"># The final String containing SQL commands</span></div><div class="line">sql = <span class="string">""</span></div><div class="line"></div><div class="line"><span class="comment"># ----- HERE WE GO!! -----</span></div><div class="line"><span class="comment"># Read from FILE_SOURCE</span></div><div class="line">file = open(FILE_SOURCE,<span class="string">'r'</span>)</div><div class="line">source = json.load(file)</div><div class="line">sourceKeys = source.keys()</div><div class="line">file.close()</div><div class="line">places = iter(sourceKeys)</div><div class="line">count = <span class="number">1</span></div><div class="line"><span class="keyword">for</span> place <span class="keyword">in</span> places:</div><div class="line">    provCode = int(place[<span class="number">0</span>:<span class="number">2</span>])</div><div class="line">    cityCode = int(place[<span class="number">2</span>:<span class="number">4</span>])</div><div class="line">    countyCode = int(place[<span class="number">4</span>:<span class="number">6</span>])</div><div class="line">    name = source.get(place)</div><div class="line">    placeInfo = (count,provCode,cityCode,countyCode,name)</div><div class="line">    sqlAddPlace = SQL_INSERT.format(PLACE_IN_DB,str(placeInfo))</div><div class="line">    sql += sqlAddPlace</div><div class="line">    count+=<span class="number">1</span></div><div class="line"><span class="comment"># Iteration finished</span></div><div class="line">file = open(FILE_TARGET,<span class="string">'w'</span>)</div><div class="line">file.write(sql)</div><div class="line">file.close()</div><div class="line">print(<span class="string">'SQL commands have been put into places.sql'</span>)</div></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> json</span><br><span class="line"></span><br><span class="line"><span class="comment"># ----- CONSTANTS -----</span></span><br><span class="line">PLACE_IN_DB = <span class="string">'area'</span></span><br><span class="line">SQL_INSERT = <span class="string">"INSERT INTO `&#123;0&#125;` VALUES &#123;1&#125;;\n"</span></span><br><span class="line">FILE_SOURCE = <span class="string">'list.json'</span></span><br><span class="line">FILE_TARGET = <span class="string">'places.sql'</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># ----- GLOBAL VARIABLES -----</span></span><br><span class="line"><span class="comment"># The final String containing SQL commands</span></span><br><span class="line">sql = <span class="string">""</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># ----- HERE WE GO!! -----</span></span><br><span class="line"><span class="comment"># Read from FILE_SOURCE</span></span><br><span class="line">file = open(FILE_SOURCE,<span class="string">'r'</span>)</span><br><span class="line">source = json.load(file)</span><br><span class="line">sourceKeys = source.keys()</span><br><span class="line">file.close()</span><br><span class="line">places = iter(sourceKeys)</span><br><span class="line">count = <span class="number">1</span></span><br><span class="line"><span class="keyword">for</span> place <span class="keyword">in</span> places:</span><br><span class="line">    provCode = int(place[<span class="number">0</span>:<span class="number">2</span>])</span><br><span class="line">    cityCode = int(place[<span class="number">2</span>:<span class="number">4</span>])</span><br><span class="line">    countyCode = int(place[<span class="number">4</span>:<span class="number">6</span>])</span><br><span class="line">    name = source.get(place)</span><br><span class="line">    placeInfo = (count,provCode,cityCode,countyCode,name)</span><br><span class="line">    sqlAddPlace = SQL_INSERT.format(PLACE_IN_DB,str(placeInfo))</span><br><span class="line">    sql += sqlAddPlace</span><br><span class="line">    count+=<span class="number">1</span></span><br><span class="line"><span class="comment"># Iteration finished</span></span><br><span class="line">file = open(FILE_TARGET,<span class="string">'w'</span>)</span><br><span class="line">file.write(sql)</span><br><span class="line">file.close()</span><br><span class="line">print(<span class="string">'SQL commands have been put into places.sql'</span>)</span><br></pre></td></tr></table></figure>
 <p>任务告一段落。打这篇blog不为别的，以后再遇Python回看此文可以快速（突然）熟悉。但愿如此吧。</p>
 <p><em>（Go语言啊，Android啊，一大堆等着死磕，我竟还有心思更新blog）</em></p>
 
       
     </div>
+
+    
+
     
     
     
@@ -441,11 +536,8 @@
           </div>
           
 
+  
 
-          
-  <div class="comments" id="comments">
-    
-  </div>
 
 
         </div>
@@ -462,134 +554,182 @@
 
   <aside id="sidebar" class="sidebar">
     
-      <div id="sidebar-dimmer"></div>
-    
     <div class="sidebar-inner">
 
       
 
       
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
-        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-          <img class="site-author-image" itemprop="image"
-               src="/images/avatar.jpg"
-               alt="Demkors Infinity" />
-          <p class="site-author-name" itemprop="name">Demkors Infinity</p>
-           
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.jpg"
+                alt="Demkors Infinity" />
+            
+              <p class="site-author-name" itemprop="name">Demkors Infinity</p>
               <p class="site-description motion-element" itemprop="description">简单得不能再简单了</p>
-          
-        </div>
-        <nav class="site-state motion-element">
+          </div>
 
           
-            <div class="site-state-item site-state-posts">
-              <a href="/archives/">
-                <span class="site-state-item-count">9</span>
-                <span class="site-state-item-name">日志</span>
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">11</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">7</span>
+                    <span class="site-state-item-name">分类</span>
+                  
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">17</span>
+                    <span class="site-state-item-name">标签</span>
+                  
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/iDemkors" target="_blank" title="GitHub"><i class="fa fa-fw fa-github"></i></a>
+                  
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://gitee.com/iDemkors" target="_blank" title="OSChina (Gitee)"><i class="fa fa-fw fa-git"></i></a>
+                  
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://weibo.com/cjdawei" target="_blank" title="Weibo"><i class="fa fa-fw fa-weibo"></i></a>
+                  
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="http://t.qq.com/cjdawei" target="_blank" title="Tencent Weibo"><i class="fa fa-fw fa-tencent-weibo"></i></a>
+                  
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="http://demkors.lofter.com" target="_blank" title="Lofter"><i class="fa fa-fw fa-instagram"></i></a>
+                  
+                </span>
+              
+            </div>
+          
+
+          
+          
+            <div class="cc-license motion-element" itemprop="license">
+              <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" target="_blank">
+                <img src="/images/cc-by-nc-sa.svg" alt="Creative Commons" />
               </a>
             </div>
           
 
           
-            
-            
-            <div class="site-state-item site-state-categories">
-              
-                <span class="site-state-item-count">6</span>
-                <span class="site-state-item-name">分类</span>
-              
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-envelope"></i>
+                eMail
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="/#" title="coputerpepo(at)163.com" target="_blank">coputerpepo(at)163.com</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="/#" title="demkors(at)gmail.com" target="_blank">demkors(at)gmail.com</a>
+                  </li>
+                
+              </ul>
             </div>
           
 
           
             
-            
-            <div class="site-state-item site-state-tags">
-              
-                <span class="site-state-item-count">14</span>
-                <span class="site-state-item-name">标签</span>
-              
-            </div>
+          
           
 
-        </nav>
-
-        
-
-        <div class="links-of-author motion-element">
-          
-            
-              <span class="links-of-author-item">
-                <a href="https://github.com/iDemkors" target="_blank" title="GitHub">
-                  
-                    <i class="fa fa-fw fa-github"></i>
-                  
-                    
-                      GitHub
-                    
-                </a>
-              </span>
-            
-              <span class="links-of-author-item">
-                <a href="http://git.oschina.net/idemkors" target="_blank" title="开源中国Git">
-                  
-                    <i class="fa fa-fw fa-git-square"></i>
-                  
-                    
-                      开源中国Git
-                    
-                </a>
-              </span>
-            
-              <span class="links-of-author-item">
-                <a href="http://weibo.com/cjdawei" target="_blank" title="微博">
-                  
-                    <i class="fa fa-fw fa-weibo"></i>
-                  
-                    
-                      微博
-                    
-                </a>
-              </span>
-            
-              <span class="links-of-author-item">
-                <a href="http://t.qq.com/cjdawei" target="_blank" title="腾讯微博">
-                  
-                    <i class="fa fa-fw fa-tencent-weibo"></i>
-                  
-                    
-                      腾讯微博
-                    
-                </a>
-              </span>
-            
-          
         </div>
-
-        
-        
-
-        
-        
-          <div class="links-of-blogroll motion-element links-of-blogroll-block">
-            <div class="links-of-blogroll-title">
-              <i class="fa  fa-fw fa-globe"></i>
-              Special thanks
-            </div>
-            <ul class="links-of-blogroll-list">
-              
-                <li class="links-of-blogroll-item">
-                  <a href="http://blog.lxstart.net" title="X-cold" target="_blank">X-cold</a>
-                </li>
-              
-            </ul>
-          </div>
-        
-
-        
-
-
       </section>
 
       
@@ -606,30 +746,35 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright" >
-  
-  &copy;  2011 - 
-  <span itemprop="copyrightYear">2017</span>
-  <span class="with-love">
+        <div class="copyright">&copy; 2011 &mdash; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love" id="animate">
     <i class="fa fa-cube"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">Demkors Infinity</span>
+
+  
+
+  
 </div>
 
 
-<div class="powered-by">
-  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
-</div>
 
-<div class="theme-info">
-  主题 -
-  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
-    NexT.Mist
-  </a>
-</div>
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动 v3.7.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/theme-next/hexo-theme-next">NexT.Muse</a> v6.3.0</div>
+
+
 
 
         
+
 
 
 
@@ -646,6 +791,8 @@
         <i class="fa fa-arrow-up"></i>
         
       </div>
+    
+
     
 
   </div>
@@ -666,7 +813,6 @@
 
 
 
-  
 
 
 
@@ -679,55 +825,53 @@
 
 
 
-  
-  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
-
-  
-  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
-
-  
-  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
-
-  
-  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
-
-  
-  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
-
-  
-  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
 
 
-  
-
-
-  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
-
-  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
 
 
 
   
   
-
-  
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
-
-
-
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
   
 
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
 
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.3.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.3.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.3.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.3.0"></script>
 
 
 
   
 
 
-  
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.3.0"></script>
 
+
+
+  
 
 
 
@@ -750,12 +894,25 @@
 
 
 
+
+
+
+
   
 
 
 
 
 
+  
+
+  
+
+  
+
+  
+
+  
   
 
   
